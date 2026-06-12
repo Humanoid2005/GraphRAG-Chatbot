@@ -2,7 +2,7 @@
 
 GraphRAG Nexus is a cutting-edge Retrieval-Augmented Generation (RAG) system that integrates vector semantics with explicit knowledge graphs. By combining dense semantic similarity search with topological graph traversals, this system enables deep, multi-hop reasoning over complex documents, images, and audio files.
 
-## 🧠 Architecture Overview
+## Architecture Overview
 
 The system operates on a dual-retrieval architecture:
 1. **Vector Store (ChromaDB)**: Handles dense embeddings for rapid, similarity-based retrieval of raw text chunks and visual analysis descriptions.
@@ -17,7 +17,7 @@ When a query is made, the `GraphController` and `RetrievalService` orchestrate a
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend (Client)
 - **Framework**: React 19 + Vite
@@ -33,7 +33,7 @@ When a query is made, the `GraphController` and `RetrievalService` orchestrate a
 - **Vector Database**: ChromaDB
 - **Endpoints**: `/api/query` (for text inference) and `/api/upload` (for multi-modal data ingestion).
 
-## 🧠 Custom Finetuning (Notebooks)
+##  Custom Finetuning (Notebooks)
 The project includes specialized Jupyter notebooks in the `notebooks/` directory for enhancing both the vector and graph components of the pipeline:
 
 1. **Knowledge Graph Extractor Finetuning (`finetune-sciphy-triplex.ipynb`)**
@@ -46,7 +46,7 @@ The project includes specialized Jupyter notebooks in the `notebooks/` directory
    - **Method**: Trains a custom bottleneck Projection MLP head to minimize the Cosine Similarity Loss between the student (`nomic-embed-text-v1.5`) and teacher (`clip-vit-large-patch14`) embeddings.
    - **Dataset**: Cornell University arXiv metadata snapshot. Extracted and filtered exactly **2,000,000 samples** based on strict CLIP token-count boundaries.
 
-### 📊 Performance & Training Metrics
+###  Performance & Training Metrics
 The following scoring metrics were achieved during the finetuning phases:
 
 - **KG Extractor (Llama-3 8B LoRA)**: 
@@ -64,7 +64,7 @@ The following scoring metrics were achieved during the finetuning phases:
 
 ---
 
-## 🔮 Future Improvements (Roadmap)
+##  Future Improvements (Roadmap)
 The following architectural enhancements are planned for future iterations of GraphRAG Nexus:
 
 - **Session-Based Memory Management**: Implementing short-term conversational buffers and long-term user profiles (e.g., using Redis or Neo4j temporal edges) to maintain deep conversational context across multi-turn sessions.
@@ -72,6 +72,7 @@ The following architectural enhancements are planned for future iterations of Gr
 - **Hybrid Query Routing**: Building a lightweight intent-classification layer to intelligently route simple factual queries to vector-only search (saving compute) and complex reasoning queries to the full dual-GraphRAG pipeline.
 - **Real-Time Token Streaming**: Upgrading the FastAPI backend and React frontend to support Server-Sent Events (SSE), allowing the LLM's response to stream instantly token-by-token.
 - **Multi-Agent Ingestion**: Deploying parallel, specialized sub-agents (e.g., Vision agents for charts, Audio agents for transcripts) that asynchronously analyze and populate the Neo4j graph during bulk file uploads.
+- **Web-scraping augmented data ingestion**: Use web-scraping APIs or python packages like bs4 and selenium to scrape web information and use that also to augment user query answering.
 
 ---
 
