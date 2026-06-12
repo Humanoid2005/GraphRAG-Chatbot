@@ -93,7 +93,7 @@ The following architectural enhancements are planned for future iterations of Gr
    ```bash
    pip install -r requirements.txt
    ```
-3. Configure your server environment variables (Neo4j URI, Chroma paths, API keys).
+3. Configure your server environment variables (Neo4j URI, Chroma paths, API keys in a .env in server folder). The name of configurable variables will be in the Config.py file in the config folder of the server.
 4. Start the backend server (typically running on `http://127.0.0.1:8000`):
    ```bash
    # Adjust based on your specific entry point (e.g., uvicorn main:app --reload)
